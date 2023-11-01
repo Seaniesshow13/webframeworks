@@ -1,0 +1,29 @@
+extends layout
+
+include _includes/sharedHTMLfunctions
+
+block content
+ .row.banner
+   .col-12
+    h1=pageHeader.title
+    small &nbsp;#{pageHeader.strapline}
+ .row
+   .col-12.col-md-8 
+     each movie in movies
+        .card
+         .card-block
+           h3
+            p=movie.name
+             small &nbsp;
+              +outputRating(movie.rating)
+			  
+           h5 Cast
+            .cast
+             each cast in movie.cast
+               .p= cast
+           h5 Directors
+            .directors
+             each directors in movie.directors
+              .p= directors
+           h5 Runtime
+             .p= movie.runtime + " minutes"
